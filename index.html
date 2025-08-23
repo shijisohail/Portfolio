@@ -332,7 +332,7 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <span class="chip"><i class="fa-solid fa-terminal"></i> Python • Django • Microservices</span>
+        <span class="chip"><i class="fa-solid fa-terminal"></i> Python • RabbitMQ • Migrations • Microservices</span>
         <h1 class="title">
           Building <span class="gradient">reliable</span>, <span class="gradient">scalable</span> backends.
         </h1>
@@ -354,8 +354,8 @@
             <div class="kpi"><div class="num" data-count="30">0%</div><div class="note">Revenue ↑</div></div>
           </div>
           <ul class="bullets">
-            <li>Optimized network schema for logistics tracking (AT&T • DunTracking).</li>
-            <li>Kafka + Celery for async pipelines and event-driven services.</li>
+            <li>Leading Python 2.7 → 3.9 migration for Leadpages production systems.</li>
+            <li>RabbitMQ + Core Python for distributed messaging and microservices.</li>
             <li>Docker/K8s on AWS (EC2, S3) for resilient deployments.</li>
           </ul>
         </div>
@@ -378,10 +378,17 @@
           </div>
         </div>
         <div class="skill-card">
-          <h3>Distributed Systems</h3>
+          <h3>Messaging & Queues</h3>
           <div class="badges">
-            <span class="badge">Microservices</span><span class="badge">Apache Kafka</span><span class="badge">Celery</span><span class="badge">Redis</span>
-            <span class="badge">Async Tasks</span>
+            <span class="badge">RabbitMQ</span><span class="badge">Apache Kafka</span><span class="badge">Message Brokers</span><span class="badge">Event-Driven</span>
+            <span class="badge">Async Messaging</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Legacy Modernization</h3>
+          <div class="badges">
+            <span class="badge">Python 2.7 → 3.9</span><span class="badge">Code Migration</span><span class="badge">Refactoring</span>
+            <span class="badge">Compatibility</span>
           </div>
         </div>
         <div class="skill-card">
@@ -424,8 +431,21 @@
       <div class="timeline">
         <div class="tl-item">
           <div class="job">
+            <h3>Python Developer — Uforia (Client: Leadpages)</h3>
+            <div class="meta">Aug 2024 – Present · Remote</div>
+            <ul class="bullets">
+              <li>Leading Python migration project from legacy Python 2.7 to Python 3.9 for critical production systems.</li>
+              <li>Architecting and implementing RabbitMQ-based messaging solutions for distributed microservices.</li>
+              <li>Refactoring core Python codebase to ensure compatibility, performance optimization, and maintainability.</li>
+              <li>Collaborating with Leadpages team to modernize infrastructure while maintaining zero-downtime deployments.</li>
+              <li>Implementing automated testing strategies and CI/CD pipelines for seamless migration process.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="job">
             <h3>Python Developer — Merik Solutions (Client: AT&T & DunTracking)</h3>
-            <div class="meta">Jun 2024 – Present · Islamabad</div>
+            <div class="meta">Jun 2024 – Aug 2024 · Islamabad</div>
             <ul class="bullets">
               <li>Designed and integrated APIs & web crawlers to fetch real‑time shipment data from ports and carriers.</li>
               <li>Improved synchronization and availability for AT&T's shipment tracking; boosted operational visibility.</li>
@@ -469,6 +489,7 @@
 
       <div class="filters">
         <button class="filter active" data-filter="*">All</button>
+        <button class="filter" data-filter="migration">Migration</button>
         <button class="filter" data-filter="logistics">Logistics</button>
         <button class="filter" data-filter="ai">AI</button>
         <button class="filter" data-filter="iot">IoT</button>
@@ -476,6 +497,13 @@
       </div>
 
       <div class="projects-grid" id="projectGrid">
+        <article class="project" data-tags="migration">
+          <div class="chip"><i class="fa-solid fa-code-branch"></i> Migration</div>
+          <h3>Python 2.7 → 3.9 Migration</h3>
+          <p>Large-scale codebase migration for Leadpages, modernizing legacy systems while maintaining production stability and zero downtime.</p>
+          <div class="tags"><span class="tag">Python 2.7</span><span class="tag">Python 3.9</span><span class="tag">RabbitMQ</span><span class="tag">Migration</span></div>
+        </article>
+        
         <article class="project" data-tags="ai">
           <div class="chip"><i class="fa-solid fa-wave-square"></i> AI / NLP</div>
           <h3>AI‑Powered Call Analysis System</h3>
@@ -699,7 +727,7 @@ def publish_event(topic: str, payload: dict) -> None:
       btn.classList.add('active');
       const tag = btn.dataset.filter;
       [...grid.children].forEach(card => {
-        card.style.display = (tag==='*' || card.dataset.tags.includes(tag)) ? 'flex' : 'none';
+        card.style.display = (tag==='*' || (card.dataset.tags && card.dataset.tags.includes(tag))) ? 'flex' : 'none';
       })
     }));
 
