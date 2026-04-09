@@ -17,18 +17,20 @@
 
   <style>
     :root {
-      --bg: #0d1117;
-      --panel: #111827;
-      --muted: #8b949e;
-      --text: #e6edf3;
+      --bg: #060f1e;
+      --panel: #091624;
+      --muted: #94adc8;
+      --text: #e2ecf6;
       --brand: #58a6ff;
       --brand-2: #22d3ee;
       --ok: #22c55e;
       --warn: #eab308;
       --err: #ef4444;
-      --card: #161b22;
-      --border: #30363d;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --card: #0d1e33;
+      --card-2: #102540;
+      --border: #1c3250;
+      --border-hi: #2e4f78;
+      --shadow: 0 12px 36px rgba(0,0,0,.5);
       --radius: 16px;
     }
 
@@ -38,63 +40,86 @@
       margin: 0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color: var(--text);
-      background: radial-gradient(1200px 600px at 10% -10%, rgba(34,211,238,.08), transparent),
-                  radial-gradient(1000px 800px at 90% -20%, rgba(88,166,255,.08), transparent),
-                  var(--bg);
+      background:
+        radial-gradient(ellipse 900px 700px at 5%  15%,  rgba(88,166,255,.14), transparent),
+        radial-gradient(ellipse 700px 600px at 95% 10%,  rgba(34,211,238,.11), transparent),
+        radial-gradient(ellipse 800px 600px at 50% 85%,  rgba(88,166,255,.09), transparent),
+        linear-gradient(180deg, #071326 0%, #060f1e 40%, #050d1a 70%, #06101e 100%);
+      background-attachment: fixed;
     }
 
     a { color: var(--brand); text-decoration: none }
 
     .container { width: min(1200px, 92vw); margin: 0 auto }
 
+    /* SCROLL REVEAL */
+    @keyframes fadeIn { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:none } }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease, transform 0.55s ease }
+    .reveal.visible { opacity: 1; transform: none }
+    .reveal:nth-child(2) { transition-delay: 0.08s }
+    .reveal:nth-child(3) { transition-delay: 0.16s }
+    .reveal:nth-child(4) { transition-delay: 0.24s }
+    .reveal:nth-child(5) { transition-delay: 0.32s }
+    .reveal:nth-child(6) { transition-delay: 0.40s }
+
     /* NAV */
     .nav {
-      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(13,17,23,.9), rgba(13,17,23,.6));
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(13,17,23,.92), rgba(13,17,23,.7));
       border-bottom: 1px solid rgba(48,54,61,.6);
     }
     .nav-inner { display:flex; align-items:center; justify-content:space-between; padding: 16px 0 }
     .brand { display:flex; align-items:center; gap:12px; font-weight:700 }
     .brand .logo { width:34px; height:34px; border-radius:10px; display:grid; place-items:center; color:#0d1117; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow) }
-    .nav-links { display:flex; gap:18px; flex-wrap:wrap }
-    .nav-links a { padding:8px 12px; border-radius:10px; color:var(--text); opacity:.9 }
-    .nav-links a:hover { background: #0b1220 }
+    .nav-links { display:flex; gap:4px; flex-wrap:wrap }
+    .nav-links a { padding:7px 12px; border-radius:8px; color: var(--muted); font-size:14px; font-weight:500; transition: all 0.2s ease }
+    .nav-links a:hover { color: var(--text); background: rgba(88,166,255,.08) }
+    .nav-links a.active { color: var(--brand); background: rgba(88,166,255,.1) }
 
     /* HERO */
     .hero { padding: 64px 0 32px; }
     .hero-grid { display:grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items:center }
-    .chip { display:inline-flex; align-items:center; gap:8px; font-size:12px; padding:6px 10px; border:1px solid var(--border); border-radius:999px; color:var(--muted); background: rgba(22,27,34,.6) }
+    .chip { display:inline-flex; align-items:center; gap:8px; font-size:12px; padding:6px 12px; border:1px solid rgba(88,166,255,.25); border-radius:999px; color:var(--brand); background: rgba(88,166,255,.06) }
     .title { font-size: clamp(28px, 5vw, 48px); line-height:1.1; margin:14px 0 }
     .title .gradient { background: linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip:text; color: transparent }
-    .subtitle { color: var(--muted); max-width: 65ch }
-    .cta { display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px }
-    .btn { padding: 12px 16px; border-radius: 12px; border:1px solid var(--border); background: var(--card); color: var(--text); box-shadow: var(--shadow); font-weight:600 }
-    .btn:hover { border-color: var(--brand); transform: translateY(-1px) }
-    .btn.primary { background: linear-gradient(135deg, rgba(88,166,255,.18), rgba(34,211,238,.18)); border-color: rgba(88,166,255,.4) }
+    .subtitle { color: var(--muted); max-width: 65ch; line-height: 1.7 }
+    .cta { display:flex; gap:10px; flex-wrap:wrap; margin-top: 20px }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding: 11px 18px; border-radius: 10px; border:1px solid var(--border); background: var(--card); color: var(--text); box-shadow: var(--shadow); font-weight:600; font-size:14px; transition: all 0.2s ease; cursor:pointer; text-decoration:none }
+    .btn:hover { border-color: var(--brand); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(88,166,255,.15); color: var(--text) }
+    .btn.primary { background: linear-gradient(135deg, rgba(88,166,255,.2), rgba(34,211,238,.12)); border-color: rgba(88,166,255,.45) }
+    .btn.primary:hover { background: linear-gradient(135deg, rgba(88,166,255,.3), rgba(34,211,238,.2)) }
 
-    .hero-card { background: linear-gradient(180deg, rgba(34,197,94,.06), rgba(34,211,238,.03)); border:1px solid var(--border); padding: 22px; border-radius: var(--radius) }
+    .hero-card { background: linear-gradient(160deg, rgba(88,166,255,.08), rgba(34,211,238,.04)); border:1px solid rgba(88,166,255,.25); padding: 22px; border-radius: var(--radius); box-shadow: 0 0 40px rgba(88,166,255,.06) }
     .kpis { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px }
-    .kpi { background: var(--card); border:1px solid var(--border); border-radius: 14px; padding:16px; text-align:center; border-top-width: 3px }
-    .kpi:nth-child(1) { border-top-color: var(--brand); }
-    .kpi:nth-child(1) .num { color: var(--brand); }
-    .kpi:nth-child(2) { border-top-color: var(--brand-2); }
-    .kpi:nth-child(2) .num { color: var(--brand-2); }
-    .kpi:nth-child(3) { border-top-color: var(--ok); }
-    .kpi:nth-child(3) .num { color: var(--ok); }
-    .kpi .num { font-family: 'Fira Code', monospace; font-size: 24px; font-weight: 700 }
+    .kpi { background: var(--card); border:1px solid var(--border); border-radius: 14px; padding:16px; text-align:center; border-top-width: 3px; transition: transform 0.2s ease, box-shadow 0.2s ease }
+    .kpi:hover { transform: translateY(-2px) }
+    .kpi:nth-child(1) { border-top-color: var(--brand) }
+    .kpi:nth-child(1) .num { color: var(--brand) }
+    .kpi:nth-child(1):hover { box-shadow: 0 6px 20px rgba(88,166,255,.12) }
+    .kpi:nth-child(2) { border-top-color: var(--brand-2) }
+    .kpi:nth-child(2) .num { color: var(--brand-2) }
+    .kpi:nth-child(2):hover { box-shadow: 0 6px 20px rgba(34,211,238,.12) }
+    .kpi:nth-child(3) { border-top-color: var(--ok) }
+    .kpi:nth-child(3) .num { color: var(--ok) }
+    .kpi:nth-child(3):hover { box-shadow: 0 6px 20px rgba(34,197,94,.12) }
+    .kpi .num { font-family: 'Fira Code', monospace; font-size: 26px; font-weight: 700 }
 
     /* SECTION */
-    section { padding: 52px 0 }
-    .section-title { display:flex; align-items:center; gap:12px; margin-bottom: 18px }
-    .section-title h2 { margin:0; font-size: 24px }
-    .section-desc { color: var(--muted); margin-bottom: 22px; max-width:72ch }
+    section { padding: 64px 0; position: relative }
+    section + section { border-top: 1px solid rgba(30, 50, 80, 0.5) }
+    .section-title { display:flex; align-items:center; gap:12px; margin-bottom: 8px }
+    .section-title i { color: var(--brand); font-size: 18px }
+    .section-title h2 { margin:0; font-size: 26px; font-weight: 700 }
+    .section-desc { color: var(--muted); margin-bottom: 26px; max-width:72ch; line-height:1.7; font-size: 15px }
 
     /* SKILLS */
-    .skills { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px }
-    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px }
-    .skill-card h3 { margin:6px 0 8px 0; font-size: 16px; color: var(--brand) }
-    .badges { display:flex; flex-wrap:wrap; gap:8px }
-    .badge { padding:6px 10px; border:1px solid var(--border); border-radius: 999px; font-size:12px; color: var(--text); background: #0b1220 }
+    .skills { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px }
+    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; transition: all 0.25s ease }
+    .skill-card:hover { border-color: rgba(88,166,255,.4); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.3) }
+    .skill-card h3 { margin:0 0 10px 0; font-size: 13px; font-weight: 600; color: var(--brand); text-transform: uppercase; letter-spacing: 0.06em }
+    .badges { display:flex; flex-wrap:wrap; gap:7px }
+    .badge { padding:5px 11px; border:1px solid var(--border); border-radius: 999px; font-size:12px; color: var(--text); background: rgba(88,166,255,.06); transition: all 0.2s ease; cursor:default }
+    .badge:hover { border-color: var(--brand); color: var(--brand); background: rgba(88,166,255,.12) }
 
     /* EXPERIENCE TIMELINE */
     .timeline { position:relative; padding-left: 32px; margin-top: 20px }
@@ -103,15 +128,16 @@
       position:absolute;
       left:12px;
       top:19px;
-      bottom:52px;
+      bottom:0;
       width:2px;
-      background: linear-gradient(180deg, var(--brand), var(--brand-2) 70%, transparent);
+      background: linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 65%, transparent 95%);
       z-index: 1;
     }
     .tl-item {
       position:relative;
-      margin-bottom:32px;
+      margin-bottom:28px;
     }
+    .tl-item:last-child { margin-bottom: 0 }
     .tl-item:before {
       content:"";
       position:absolute;
@@ -122,7 +148,7 @@
       border-radius:50%;
       background: var(--bg);
       border: 2px solid var(--brand);
-      box-shadow: 0 0 0 3px rgba(88,166,255,.25), 0 0 12px rgba(88,166,255,.3);
+      box-shadow: 0 0 0 3px rgba(88,166,255,.2), 0 0 14px rgba(88,166,255,.25);
       z-index: 2;
     }
     .tl-item:after {
@@ -136,54 +162,84 @@
       background: var(--brand);
       z-index: 3;
     }
-    .job { 
-      background: var(--card); 
-      border:1px solid var(--border); 
-      border-radius: var(--radius); 
-      padding: 20px;
+    .job {
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
       margin-left: 8px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
-    .job h3 { 
-      margin: 0 0 8px 0;
+    .job:hover { border-color: rgba(88,166,255,.35); box-shadow: 0 4px 20px rgba(0,0,0,.25) }
+    .job h3 {
+      margin: 0 0 6px 0;
       color: var(--text);
-      font-size: 18px;
+      font-size: 17px;
+      font-weight: 600;
     }
-    .meta { 
-      color: var(--brand-2); 
-      font-size: 13px; 
-      margin-bottom: 12px;
+    .meta {
+      color: var(--brand-2);
+      font-size: 13px;
+      margin-bottom: 14px;
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .bullets { 
-      margin: 12px 0 0 0; 
-      padding-left: 20px; 
-      color: #c9d1d9;
+    .meta::before { content: ""; display:inline-block; width:6px; height:6px; border-radius:50%; background: var(--ok) }
+    .bullets {
+      margin: 10px 0 0 0;
+      padding-left: 18px;
+      color: var(--text);
       list-style: none;
     }
-    .bullets li { 
-      margin: 10px 0;
+    .bullets li {
+      margin: 9px 0;
       position: relative;
-      padding-left: 0;
+      padding-left: 2px;
+      font-size: 14px;
+      line-height: 1.6;
     }
     .bullets li:before {
       content: "▸";
       color: var(--brand);
       position: absolute;
-      left: -15px;
-      font-weight: bold;
+      left: -14px;
+      font-size: 11px;
+      top: 3px;
     }
+    .sub-label { color:var(--muted); font-size:13px; margin:14px 0 8px 0; display:flex; align-items:center; gap:6px }
+    .sub-label strong { color: var(--brand-2) }
+    .sub-label::before { content:""; display:inline-block; width:3px; height:14px; background:var(--brand-2); border-radius:2px }
 
     /* PROJECTS */
-    .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 16px }
-    .filter { cursor:pointer; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background: var(--panel); font-size:12px; transition: all 0.3s ease }
-    .filter.active { border-color: var(--brand); color: var(--brand); background: rgba(88,166,255,.1) }
-    .filter:hover { border-color: var(--brand-2) }
-    .projects-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px }
-    .project { display:flex; flex-direction:column; gap:10px; background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding: 14px; transition: all 0.3s ease }
-    .project:hover { border-color: var(--brand); transform: translateY(-2px) }
-    .project h3 { margin:0 }
+    .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 20px }
+    .filter { cursor:pointer; padding:8px 16px; border-radius:999px; border:1px solid var(--border); background: var(--card); font-size:13px; font-weight:500; color: var(--text); transition: all 0.2s ease }
+    .filter:hover { border-color: var(--brand-2); color: var(--brand-2) }
+    .filter.active { border-color: var(--brand); color: var(--brand); background: rgba(88,166,255,.12); font-weight:600 }
+    .projects-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px }
+    .project { display:flex; flex-direction:column; gap:10px; background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding: 18px; transition: all 0.25s ease; position:relative; overflow:hidden }
+    .project::after { content:""; position:absolute; top:0; left:0; right:0; height:3px; opacity:0; transition: opacity 0.25s ease }
+    .project:hover::after { opacity:1 }
+    .project:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,.3) }
+    .project[data-tags*="analytics"]::after       { background: linear-gradient(90deg, var(--brand), var(--brand-2)) }
+    .project[data-tags*="analytics"]:hover         { border-color: rgba(88,166,255,.5) }
+    .project[data-tags*="infrastructure"]::after   { background: linear-gradient(90deg, var(--brand-2), #67e8f9) }
+    .project[data-tags*="infrastructure"]:hover    { border-color: rgba(34,211,238,.5) }
+    .project[data-tags*="integrations"]::after     { background: linear-gradient(90deg, #a78bfa, #818cf8) }
+    .project[data-tags*="integrations"]:hover      { border-color: rgba(167,139,250,.5) }
+    .project[data-tags*="logistics"]::after        { background: linear-gradient(90deg, var(--warn), #fbbf24) }
+    .project[data-tags*="logistics"]:hover         { border-color: rgba(234,179,8,.5) }
+    .project[data-tags*="iot"]::after              { background: linear-gradient(90deg, var(--ok), #86efac) }
+    .project[data-tags*="iot"]:hover               { border-color: rgba(34,197,94,.5) }
+    .project[data-tags*="security"]::after         { background: linear-gradient(90deg, var(--err), #fb923c) }
+    .project[data-tags*="security"]:hover          { border-color: rgba(239,68,68,.5) }
+    .project h3 { margin:0; font-size: 16px }
+    .project p { font-size: 14px; color: var(--muted); line-height: 1.6; margin:0; flex:1 }
+    .project-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:4px }
     .tags { display:flex; flex-wrap:wrap; gap:6px }
-    .tag { font-size: 12px; padding:4px 8px; border:1px dashed #2a313a; border-radius:6px; color: var(--muted) }
+    .tag { font-size: 11px; padding:4px 9px; border:1px solid var(--border); border-radius:6px; color: var(--muted); background: rgba(88,166,255,.05); transition: color 0.2s, border-color 0.2s }
+    .project:hover .tag { color: var(--text) }
 
     /* ACHIEVEMENTS */
     .achieve-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px }
@@ -216,111 +272,108 @@
     .achieve-after  { color: var(--ok);  background: rgba(34,197,94,.1);  padding:4px 10px; border-radius:6px }
     .achieve-stat i { color: var(--muted); font-size: 11px }
 
-    /* CONTACT - FIXED */
+    /* CONTACT */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      gap: 28px;
       align-items: start;
     }
     .contact-info {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: linear-gradient(160deg, var(--card-2), var(--card));
+      border: 1px solid var(--border-hi);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
     }
     .contact-info h3 {
-      margin: 0 0 16px 0;
+      margin: 0 0 6px 0;
       color: var(--brand);
+      font-size: 20px;
     }
+    .contact-info > p { color: var(--muted); font-size: 14px; margin: 0 0 20px 0; line-height: 1.6 }
     .contact-methods {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
     .contact-method {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 12px;
-      border-radius: 8px;
-      background: rgba(88,166,255,.05);
-      border: 1px solid rgba(88,166,255,.2);
+      gap: 14px;
+      padding: 13px 16px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1px solid var(--border);
       text-decoration: none;
       color: var(--text);
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
     .contact-method:hover {
-      background: rgba(88,166,255,.1);
+      background: rgba(88,166,255,.07);
       border-color: var(--brand);
-      transform: translateX(4px);
+      transform: translateX(5px);
+      box-shadow: 0 2px 14px rgba(88,166,255,.12);
     }
     .contact-method i {
       color: var(--brand);
-      width: 20px;
+      width: 18px;
       text-align: center;
+      font-size: 15px;
+      flex-shrink: 0;
     }
-    form { 
-      display: grid; 
-      gap: 16px; 
-      background: var(--card);
-      border: 1px solid var(--border);
+    .contact-method .cm-label { font-weight: 600; font-size: 14px; color: var(--text) }
+    .contact-method .cm-val   { font-size: 12px; color: var(--muted); margin-top: 1px }
+    form {
+      display: grid;
+      gap: 14px;
+      background: linear-gradient(160deg, var(--card-2), var(--card));
+      border: 1px solid var(--border-hi);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
     }
+    form h3 { margin: 0 0 4px 0; color: var(--brand); font-size: 20px }
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 14px;
     }
-    input, textarea { 
-      width: 100%; 
-      padding: 14px 16px; 
-      border-radius: 12px; 
-      border: 1px solid var(--border); 
-      background: #0b1220; 
+    input, textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
       color: var(--text);
       font-family: inherit;
       font-size: 14px;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
+    input::placeholder, textarea::placeholder { color: var(--muted) }
     input:focus, textarea:focus {
       outline: none;
       border-color: var(--brand);
+      background: rgba(88,166,255,.05);
       box-shadow: 0 0 0 3px rgba(88,166,255,.1);
     }
-    textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-    .form-submit {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
+    textarea { resize: vertical; min-height: 120px; }
+    .form-submit { display: flex; gap: 12px; align-items: center; flex-wrap: wrap }
     #formStatus {
-      margin-top: 12px;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      display: none;
+      padding: 12px 16px; border-radius: 8px; font-size: 14px; display: none;
     }
     #formStatus.success {
-      background: rgba(34,197,94,.1);
-      border: 1px solid rgba(34,197,94,.3);
-      color: var(--ok);
-      display: block;
+      background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.3);
+      color: var(--ok); display: block;
     }
     #formStatus.error {
-      background: rgba(239,68,68,.1);
-      border: 1px solid rgba(239,68,68,.3);
-      color: var(--err);
-      display: block;
+      background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.3);
+      color: var(--err); display: block;
     }
     .note { color: var(--muted); font-size: 12px }
 
     /* FOOTER */
-    footer { border-top:1px solid var(--border); background:#0b1220; color:var(--muted); padding: 24px 0; font-size: 14px }
+    footer { border-top:1px solid rgba(30,50,80,.5); background: transparent; color:var(--muted); padding: 28px 0; font-size: 14px }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
@@ -330,6 +383,7 @@
       .timeline { padding-left: 28px }
       .timeline:before { left: 10px }
       .tl-item:before { left: -24px }
+      .tl-item:after  { left: -20px }
     }
   </style>
 
@@ -414,56 +468,56 @@
       <p class="section-desc">Senior Backend Engineer with 5+ years owning features end-to-end — from system design and data models to APIs, infrastructure, and CI/CD. Comfortable across Python, TypeScript, and Lua, with deep focus on performance, distributed systems, and AI-assisted delivery.</p>
 
       <div class="skills" style="margin-top:18px">
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Languages</h3>
           <div class="badges">
             <span class="badge">Python (expert)</span><span class="badge">TypeScript</span><span class="badge">JavaScript</span>
             <span class="badge">SQL</span><span class="badge">Lua</span>
           </div>
         </div>
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Frameworks</h3>
           <div class="badges">
             <span class="badge">FastAPI</span><span class="badge">Django</span><span class="badge">Django REST Framework</span>
             <span class="badge">NestJS</span><span class="badge">Next.js</span><span class="badge">Flask</span>
           </div>
         </div>
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Databases & Storage</h3>
           <div class="badges">
             <span class="badge">PostgreSQL</span><span class="badge">TimescaleDB</span><span class="badge">MongoDB</span>
             <span class="badge">Redis</span><span class="badge">MySQL</span>
           </div>
         </div>
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Messaging & Queues</h3>
           <div class="badges">
             <span class="badge">RabbitMQ</span><span class="badge">Apache Kafka</span><span class="badge">GCP Pub/Sub</span>
             <span class="badge">BullMQ</span><span class="badge">Celery</span>
           </div>
         </div>
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Cloud & Infra</h3>
           <div class="badges">
             <span class="badge">GCP (GKE, GCS, BigQuery)</span><span class="badge">AWS (S3, EC2)</span>
             <span class="badge">Docker</span><span class="badge">Kubernetes</span><span class="badge">Railway</span>
           </div>
         </div>
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Integrations & Auth</h3>
           <div class="badges">
             <span class="badge">OAuth 2.0</span><span class="badge">Paragon iPaaS</span><span class="badge">REST APIs</span>
             <span class="badge">HMAC-SHA256</span><span class="badge">Webhooks</span>
           </div>
         </div>
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Testing</h3>
           <div class="badges">
             <span class="badge">pytest</span><span class="badge">pytest-asyncio</span><span class="badge">HTTPX</span>
             <span class="badge">Jest</span><span class="badge">Vitest</span><span class="badge">TDD</span>
           </div>
         </div>
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>AI Tooling</h3>
           <div class="badges">
             <span class="badge">Cursor</span><span class="badge">Claude Code</span><span class="badge">MCP Integrations</span>
@@ -480,33 +534,33 @@
       <div class="section-title"><i class="fa-solid fa-briefcase"></i><h2>Experience</h2></div>
 
       <div class="timeline">
-        <div class="tl-item">
+        <div class="tl-item reveal">
           <div class="job">
             <h3>Software Engineer III — Uforia (Leadpages, Canada)</h3>
             <div class="meta">Aug 2025 – Present · Remote</div>
-            <p style="color:var(--muted); font-size:13px; margin:0 0 10px 0"><strong style="color:var(--brand-2)">Analytics Service</strong> — FastAPI / TimescaleDB / GCP</p>
+            <div class="sub-label"><strong>Analytics Service</strong> — FastAPI / TimescaleDB / GCP</div>
             <ul class="bullets">
               <li>Architected the full analytics backend from scratch: 10-step enrichment pipeline — SHA-256 visitor fingerprinting, GDPR IP anonymization, MaxMind GeoLite2 zero-latency lookup, bot detection, device parsing, and UTM extraction.</li>
               <li>Cut dashboard query latency from 2–4s to under 200ms on 1.4M rows by designing 5 TimescaleDB continuous aggregates replacing 10 raw hypertable scans.</li>
               <li>Built a parallel metrics read API executing 10 queries via <code>asyncio.gather</code> with global filter propagation, CVR, and period-over-period comparison.</li>
             </ul>
-            <p style="color:var(--muted); font-size:13px; margin:12px 0 10px 0"><strong style="color:var(--brand-2)">Global Scripts</strong> — NestJS / TypeScript / GCS / RabbitMQ</p>
+            <div class="sub-label"><strong>Global Scripts</strong> — NestJS / TypeScript / GCS / RabbitMQ</div>
             <ul class="bullets">
               <li>Built end-to-end: full CRUD REST API, transactional GCS manifest upload, and RabbitMQ cache invalidation on every script change.</li>
               <li>Fixed a production CORS bug and patched the Lua routing script; shipped analytics-tracker via Kubernetes Helm configs with per-environment feature-flag rollout.</li>
             </ul>
-            <p style="color:var(--muted); font-size:13px; margin:12px 0 10px 0"><strong style="color:var(--brand-2)">HTMLPub</strong> — Next.js / TypeScript / PostgreSQL / Drizzle / Railway</p>
+            <div class="sub-label"><strong>HTMLPub</strong> — Next.js / TypeScript / PostgreSQL / Drizzle / Railway</div>
             <ul class="bullets">
               <li>Replaced a static hardcoded integration registry with a DB-backed JSONB table, 5-min TTL cache, and admin CRUD UI — cutting new provider onboarding from a full deploy cycle to a 5-minute zero-deployment operation.</li>
               <li>Implemented opt-in email notifications for form submissions: non-blocking fire-and-forget dispatch with HTML and plain-text templates, user preference stored per account.</li>
             </ul>
-            <p style="color:var(--muted); font-size:13px; margin:12px 0 10px 0"><strong style="color:var(--brand-2)">Integrations Platform</strong> — Python / Paragon / OAuth 2.0</p>
+            <div class="sub-label"><strong>Integrations Platform</strong> — Python / Paragon / OAuth 2.0</div>
             <ul class="bullets">
               <li>Delivered 5 CRM integrations end-to-end (Salesforce, Pipedrive, Shopify, AWeber, Constant Contact) covering Paragon OAuth 2.0 workflows, action config APIs, and per-provider retry and error handling.</li>
             </ul>
           </div>
         </div>
-        <div class="tl-item">
+        <div class="tl-item reveal">
           <div class="job">
             <h3>Python Developer — Merik Solutions</h3>
             <div class="meta">Jun 2024 – Jan 2026 · Islamabad</div>
@@ -516,7 +570,7 @@
             </ul>
           </div>
         </div>
-        <div class="tl-item">
+        <div class="tl-item reveal">
           <div class="job">
             <h3>Python Developer — HyperNym</h3>
             <div class="meta">Sep 2022 – Jun 2024 · Islamabad</div>
@@ -526,7 +580,7 @@
             </ul>
           </div>
         </div>
-        <div class="tl-item">
+        <div class="tl-item reveal">
           <div class="job">
             <h3>Back End Developer — Cyber Reconnaissance & Combat Center</h3>
             <div class="meta">Oct 2021 – Jul 2022 · Islamabad</div>
@@ -557,50 +611,49 @@
       </div>
 
       <div class="projects-grid" id="projectGrid">
-        <article class="project" data-tags="analytics">
+        <article class="project reveal" data-tags="analytics">
           <div class="chip"><i class="fa-solid fa-chart-line"></i> Analytics · Uforia / Leadpages</div>
           <h3>Analytics Service</h3>
           <p>End-to-end analytics backend from scratch. 10-step enrichment pipeline: SHA-256 fingerprinting, GDPR IP anonymization, zero-latency GeoIP, bot detection, UTM extraction. 5 continuous aggregates cutting queries from 2–4s to under 200ms on 1.4M rows. Parallel 10-query API with CVR, session duration, and period comparison.</p>
           <div class="tags"><span class="tag">FastAPI</span><span class="tag">TimescaleDB</span><span class="tag">asyncio</span><span class="tag">MaxMind GeoLite2</span><span class="tag">GCP</span><span class="tag">BigQuery</span></div>
-          <div class="cta"><a class="btn" href="#code">View code sample</a></div>
         </article>
 
-        <article class="project" data-tags="infrastructure">
+        <article class="project reveal" data-tags="infrastructure">
           <div class="chip"><i class="fa-solid fa-code"></i> Infrastructure · Uforia / Leadpages</div>
           <h3>Global Scripts Infrastructure</h3>
           <p>Owner-scoped manifest published to GCS on every change. Manifest-loader injected on every published page with environment-aware domain resolution. Lua routing patch + Kubernetes Helm feature-flag rollout.</p>
           <div class="tags"><span class="tag">NestJS</span><span class="tag">TypeScript</span><span class="tag">GCS</span><span class="tag">RabbitMQ</span><span class="tag">Lua</span><span class="tag">Kubernetes</span></div>
         </article>
 
-        <article class="project" data-tags="integrations infrastructure">
+        <article class="project reveal" data-tags="integrations infrastructure">
           <div class="chip"><i class="fa-solid fa-plug"></i> Platform · Uforia / Leadpages</div>
           <h3>HTMLPub Integration Registry</h3>
           <p>DB-backed JSONB registry with 5-min TTL cache and admin CRUD UI. New integrations live in under 5 minutes with zero deployment. Form submission email notifications with per-account preference.</p>
           <div class="tags"><span class="tag">Next.js</span><span class="tag">Drizzle ORM</span><span class="tag">PostgreSQL</span><span class="tag">Paragon</span><span class="tag">BullMQ</span><span class="tag">Railway</span></div>
         </article>
 
-        <article class="project" data-tags="integrations">
+        <article class="project reveal" data-tags="integrations">
           <div class="chip"><i class="fa-solid fa-handshake"></i> Integrations · Uforia / Leadpages</div>
           <h3>5 Paragon CRM Integrations</h3>
           <p>Salesforce, Pipedrive, Shopify, AWeber, Constant Contact end-to-end: OAuth 2.0, action config and destination fields APIs, per-provider retry logic, AWeber 60s rate-limit backoff, Shopify GraphQL upsert.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">Paragon iPaaS</span><span class="tag">OAuth 2.0</span><span class="tag">GraphQL</span></div>
         </article>
 
-        <article class="project" data-tags="logistics">
+        <article class="project reveal" data-tags="logistics">
           <div class="chip"><i class="fa-solid fa-boxes-stacked"></i> Logistics · Merik Solutions</div>
           <h3>AT&T Shipment Tracking System</h3>
           <p>Real-time tracking integrating multiple cargo ports and logistics carriers. Celery/Redis async processing reduced latency; deployed on AWS with Docker/Kubernetes for high availability.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Celery</span><span class="tag">Redis</span><span class="tag">AWS</span><span class="tag">Docker</span></div>
         </article>
 
-        <article class="project" data-tags="iot">
+        <article class="project reveal" data-tags="iot">
           <div class="chip"><i class="fa-solid fa-building"></i> IoT · HyperNym</div>
           <h3>Smart Building & Surveillance Platform</h3>
           <p>IoT platform for building management: water leakage, fire alarm, humidity, and temperature sensors with real-time notifications across microservices via Apache Kafka.</p>
           <div class="tags"><span class="tag">Django</span><span class="tag">DRF</span><span class="tag">Apache Kafka</span><span class="tag">PostgreSQL</span><span class="tag">IoT</span></div>
         </article>
 
-        <article class="project" data-tags="security">
+        <article class="project reveal" data-tags="security">
           <div class="chip"><i class="fa-solid fa-shield-halved"></i> Security</div>
           <h3>Cyber Drills Platform</h3>
           <p>Vulnerable web applications and OS environments for cybersecurity drill training; management web app for the learning environment.</p>
@@ -618,42 +671,42 @@
 
       <div class="achieve-grid">
 
-        <div class="achieve-card achieve-perf">
+        <div class="achieve-card reveal achieve-perf">
           <div class="achieve-icon"><i class="fa-solid fa-bolt"></i></div>
           <h3>93% Query Latency Reduction</h3>
           <p>Cut Leadpages dashboard queries from 2–4s to under 200ms on 1.4M rows by designing 5 TimescaleDB continuous aggregates, replacing 10 raw hypertable scans.</p>
           <div class="achieve-stat"><span class="achieve-before">2–4s</span><i class="fa-solid fa-arrow-right"></i><span class="achieve-after">~200ms</span></div>
         </div>
 
-        <div class="achieve-card achieve-own">
+        <div class="achieve-card reveal achieve-own">
           <div class="achieve-icon"><i class="fa-solid fa-user-astronaut"></i></div>
           <h3>Sole Architect — Analytics Service</h3>
           <p>Designed and delivered the full Analytics backend from zero — system design, data models, API contracts, enrichment pipeline, and infra — with no prior codebase to reference.</p>
           <div class="tags" style="margin-top:8px"><span class="tag">FastAPI</span><span class="tag">TimescaleDB</span><span class="tag">GCP</span><span class="tag">asyncio</span></div>
         </div>
 
-        <div class="achieve-card achieve-deploy">
+        <div class="achieve-card reveal achieve-deploy">
           <div class="achieve-icon"><i class="fa-solid fa-rocket"></i></div>
           <h3>Zero-Deployment Onboarding</h3>
           <p>Eliminated full deploy cycles for integration onboarding at HTMLPub. New providers go live in under 5 minutes via a DB-backed JSONB registry with admin CRUD — no code change, no redeploy.</p>
           <div class="achieve-stat"><span class="achieve-before">Full deploy</span><i class="fa-solid fa-arrow-right"></i><span class="achieve-after">5 min</span></div>
         </div>
 
-        <div class="achieve-card achieve-xstack">
+        <div class="achieve-card reveal achieve-xstack">
           <div class="achieve-icon"><i class="fa-solid fa-layer-group"></i></div>
           <h3>Cross-Stack Delivery</h3>
           <p>Shipped production features across Python (FastAPI), TypeScript (NestJS, Next.js), Lua, SQL (TimescaleDB, PostgreSQL), and infrastructure (GKE, GCS, RabbitMQ, Railway) — all within a single role at Uforia.</p>
           <div class="tags" style="margin-top:8px"><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">Lua</span><span class="tag">SQL</span><span class="tag">K8s</span></div>
         </div>
 
-        <div class="achieve-card achieve-ai">
+        <div class="achieve-card reveal achieve-ai">
           <div class="achieve-icon"><i class="fa-solid fa-robot"></i></div>
           <h3>AI-Augmented Engineering</h3>
           <p>Pioneered agentic workflows at Uforia using Cursor and Claude Code with MCP integrations (Linear, Notion, Slack) — configured subagents, persistent rules, and multi-repo context to measurably increase delivery throughput.</p>
           <div class="tags" style="margin-top:8px"><span class="tag">Claude Code</span><span class="tag">Cursor</span><span class="tag">MCP</span><span class="tag">Agentic Workflows</span></div>
         </div>
 
-        <div class="achieve-card achieve-prod">
+        <div class="achieve-card reveal achieve-prod">
           <div class="achieve-icon"><i class="fa-solid fa-fire-extinguisher"></i></div>
           <h3>Production Incident Fixes</h3>
           <p>Diagnosed and silently resolved a live AWeber credential bug blocking all integration tasks — with no staging reproduction path. Patched a CORS bug and Lua routing issue in Global Scripts, unblocking page manifest delivery without a full redeploy.</p>
@@ -673,53 +726,34 @@
       <div class="contact-grid">
         <div class="contact-info">
           <h3>Get in Touch</h3>
-          <p class="note">I'm always interested in discussing new opportunities, challenging projects, or just connecting with fellow developers.</p>
-          
+          <p>I'm always open to discussing new roles, interesting projects, or just connecting with fellow engineers.</p>
+
           <div class="contact-methods">
             <a href="mailto:shijisohail786@gmail.com" class="contact-method">
               <i class="fa-solid fa-envelope"></i>
-              <div>
-                <div>Email</div>
-                <div class="note">shijisohail786@gmail.com</div>
-              </div>
+              <div><div class="cm-label">Email</div><div class="cm-val">shijisohail786@gmail.com</div></div>
             </a>
-            
             <a href="https://www.linkedin.com/in/shijisohail/" target="_blank" rel="noreferrer" class="contact-method">
               <i class="fa-brands fa-linkedin"></i>
-              <div>
-                <div>LinkedIn</div>
-                <div class="note">Connect professionally</div>
-              </div>
+              <div><div class="cm-label">LinkedIn</div><div class="cm-val">linkedin.com/in/shijisohail</div></div>
             </a>
-            
             <a href="https://github.com/shijisohail" target="_blank" rel="noreferrer" class="contact-method">
               <i class="fa-brands fa-github"></i>
-              <div>
-                <div>GitHub</div>
-                <div class="note">Check out my code</div>
-              </div>
+              <div><div class="cm-label">GitHub</div><div class="cm-val">github.com/shijisohail</div></div>
             </a>
-            
             <div class="contact-method">
               <i class="fa-solid fa-phone"></i>
-              <div>
-                <div>Phone</div>
-                <div class="note">+92-335-4200848</div>
-              </div>
+              <div><div class="cm-label">Phone</div><div class="cm-val">+92-335-4200848</div></div>
             </div>
-            
             <div class="contact-method">
-              <i class="fa-solid fa-map-marker-alt"></i>
-              <div>
-                <div>Location</div>
-                <div class="note">Islamabad, Pakistan</div>
-              </div>
+              <i class="fa-solid fa-location-dot"></i>
+              <div><div class="cm-label">Location</div><div class="cm-val">Islamabad, Pakistan · Open to Remote</div></div>
             </div>
           </div>
         </div>
 
         <form id="contactForm" onsubmit="return handleSubmit(event)">
-          <h3 style="margin: 0 0 16px 0; color: var(--brand);">Send a Message</h3>
+          <h3>Send a Message</h3>
           
           <div class="form-row">
             <input type="text" id="name" placeholder="Your name" required />
@@ -780,62 +814,72 @@
       step();
     });
 
-    // Project filters
+    // Project filters — fade animation
     const filters = document.querySelectorAll('.filter');
     const grid = document.getElementById('projectGrid');
     filters.forEach(btn => btn.addEventListener('click', () => {
-      filters.forEach(b=>b.classList.remove('active'));
+      filters.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const tag = btn.dataset.filter;
       [...grid.children].forEach(card => {
-        card.style.display = (tag==='*' || (card.dataset.tags && card.dataset.tags.includes(tag))) ? 'flex' : 'none';
-      })
+        const match = tag === '*' || (card.dataset.tags && card.dataset.tags.includes(tag));
+        if (match) {
+          card.style.display = 'flex';
+          card.style.animation = 'fadeIn 0.3s ease';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     }));
 
-    // Contact form with better feedback
-    function handleSubmit(e){
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Nav scroll spy
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const spyObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(s => spyObserver.observe(s));
+
+    // Contact form
+    function handleSubmit(e) {
       e.preventDefault();
       const status = document.getElementById('formStatus');
       const form = e.target;
       const btn = form.querySelector('button[type="submit"]');
-      
-      // Show loading state
       btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
       btn.disabled = true;
-      
-      // Simulate form submission (replace with actual endpoint)
       setTimeout(() => {
-        status.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+        status.textContent = '✓ Message sent! I\'ll get back to you soon.';
         status.className = 'success';
         form.reset();
-        
-        // Reset button
         btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
         btn.disabled = false;
-        
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-          status.style.display = 'none';
-        }, 5000);
-      }, 1500);
-      
+        setTimeout(() => { status.className = ''; status.style.display = 'none'; }, 5000);
+      }, 1400);
       return false;
     }
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
   </script>
