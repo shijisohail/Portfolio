@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sharjeel Sohail | Python Backend Developer</title>
-  <meta name="description" content="Sharjeel Sohail — Python Backend Developer with 3.5+ years experience in Django, DRF, Microservices, Kafka, Celery, Docker, Kubernetes, AWS. Projects: Logistics, IoT, Cybersecurity."/>
-  <meta property="og:title" content="Sharjeel Sohail | Python Backend Developer" />
-  <meta property="og:description" content="Django · DRF · Microservices · Kafka · Celery · Docker · K8s · AWS · PostgreSQL · MongoDB" />
+  <title>Sharjeel Sohail | Senior Backend Engineer</title>
+  <meta name="description" content="Sharjeel Sohail — Senior Backend Engineer with 5+ years experience in Python, FastAPI, TimescaleDB, NestJS, Distributed Systems, GCP, Docker, Kubernetes. Analytics, Integrations, Microservices."/>
+  <meta property="og:title" content="Sharjeel Sohail | Senior Backend Engineer" />
+  <meta property="og:description" content="FastAPI · TimescaleDB · NestJS · TypeScript · Kafka · RabbitMQ · GCP · Docker · K8s · PostgreSQL" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://dummyimage.com/1200x630/0d1117/58a6ff&text=Sharjeel+Sohail+—+Python+Backend+Developer" />
   <meta name="theme-color" content="#0d1117"/>
@@ -74,8 +74,14 @@
 
     .hero-card { background: linear-gradient(180deg, rgba(34,197,94,.06), rgba(34,211,238,.03)); border:1px solid var(--border); padding: 22px; border-radius: var(--radius) }
     .kpis { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px }
-    .kpi { background: var(--card); border:1px solid var(--border); border-radius: 14px; padding:16px; text-align:center }
-    .kpi .num { font-family: 'Fira Code', monospace; font-size: 24px }
+    .kpi { background: var(--card); border:1px solid var(--border); border-radius: 14px; padding:16px; text-align:center; border-top-width: 3px }
+    .kpi:nth-child(1) { border-top-color: var(--brand); }
+    .kpi:nth-child(1) .num { color: var(--brand); }
+    .kpi:nth-child(2) { border-top-color: var(--brand-2); }
+    .kpi:nth-child(2) .num { color: var(--brand-2); }
+    .kpi:nth-child(3) { border-top-color: var(--ok); }
+    .kpi:nth-child(3) .num { color: var(--ok); }
+    .kpi .num { font-family: 'Fira Code', monospace; font-size: 24px; font-weight: 700 }
 
     /* SECTION */
     section { padding: 52px 0 }
@@ -90,34 +96,45 @@
     .badges { display:flex; flex-wrap:wrap; gap:8px }
     .badge { padding:6px 10px; border:1px solid var(--border); border-radius: 999px; font-size:12px; color: var(--text); background: #0b1220 }
 
-    /* EXPERIENCE TIMELINE - FIXED */
+    /* EXPERIENCE TIMELINE */
     .timeline { position:relative; padding-left: 32px; margin-top: 20px }
-    .timeline:before { 
-      content:""; 
-      position:absolute; 
-      left:12px; 
-      top:0; 
-      bottom:0; 
-      width:2px; 
-      background: linear-gradient(180deg, var(--brand), var(--brand-2), transparent);
+    .timeline:before {
+      content:"";
+      position:absolute;
+      left:12px;
+      top:19px;
+      bottom:52px;
+      width:2px;
+      background: linear-gradient(180deg, var(--brand), var(--brand-2) 70%, transparent);
       z-index: 1;
     }
-    .tl-item { 
-      position:relative; 
+    .tl-item {
+      position:relative;
       margin-bottom:32px;
     }
-    .tl-item:before { 
-      content:""; 
-      position:absolute; 
-      left:-26px; 
-      top:12px; 
-      width:14px; 
-      height:14px; 
-      border-radius:50%; 
-      background: var(--brand); 
-      border: 3px solid var(--bg);
-      box-shadow: 0 0 0 2px var(--brand);
+    .tl-item:before {
+      content:"";
+      position:absolute;
+      left:-27px;
+      top:12px;
+      width:16px;
+      height:16px;
+      border-radius:50%;
+      background: var(--bg);
+      border: 2px solid var(--brand);
+      box-shadow: 0 0 0 3px rgba(88,166,255,.25), 0 0 12px rgba(88,166,255,.3);
       z-index: 2;
+    }
+    .tl-item:after {
+      content:"";
+      position:absolute;
+      left:-23px;
+      top:16px;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background: var(--brand);
+      z-index: 3;
     }
     .job { 
       background: var(--card); 
@@ -168,9 +185,36 @@
     .tags { display:flex; flex-wrap:wrap; gap:6px }
     .tag { font-size: 12px; padding:4px 8px; border:1px dashed #2a313a; border-radius:6px; color: var(--muted) }
 
-    /* CODE SHOWCASE */
-    pre { background: #0b1220; border:1px solid var(--border); padding: 14px; border-radius: 12px; overflow:auto; margin: 16px 0 }
-    code { font-family: 'Fira Code', monospace; font-size: 13px }
+    /* ACHIEVEMENTS */
+    .achieve-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px }
+    .achieve-card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding: 22px; position:relative; overflow:hidden; transition: transform 0.25s, border-color 0.25s }
+    .achieve-card:hover { transform: translateY(-3px) }
+    .achieve-card::before { content:""; position:absolute; top:0; left:0; right:0; height:3px }
+    .achieve-perf::before  { background: linear-gradient(90deg, var(--brand), var(--brand-2)) }
+    .achieve-own::before   { background: linear-gradient(90deg, #a78bfa, #818cf8) }
+    .achieve-deploy::before{ background: linear-gradient(90deg, var(--ok), #86efac) }
+    .achieve-xstack::before{ background: linear-gradient(90deg, var(--warn), #fbbf24) }
+    .achieve-ai::before    { background: linear-gradient(90deg, var(--brand-2), #67e8f9) }
+    .achieve-prod::before  { background: linear-gradient(90deg, var(--err), #fb923c) }
+    .achieve-perf:hover    { border-color: var(--brand) }
+    .achieve-own:hover     { border-color: #a78bfa }
+    .achieve-deploy:hover  { border-color: var(--ok) }
+    .achieve-xstack:hover  { border-color: var(--warn) }
+    .achieve-ai:hover      { border-color: var(--brand-2) }
+    .achieve-prod:hover    { border-color: var(--err) }
+    .achieve-icon { font-size: 22px; margin-bottom: 12px }
+    .achieve-perf  .achieve-icon { color: var(--brand) }
+    .achieve-own   .achieve-icon { color: #a78bfa }
+    .achieve-deploy .achieve-icon{ color: var(--ok) }
+    .achieve-xstack .achieve-icon{ color: var(--warn) }
+    .achieve-ai    .achieve-icon { color: var(--brand-2) }
+    .achieve-prod  .achieve-icon { color: var(--err) }
+    .achieve-card h3 { margin: 0 0 10px 0; font-size: 16px; color: var(--text) }
+    .achieve-card p  { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.6 }
+    .achieve-stat { display:flex; align-items:center; gap:10px; margin-top:14px; font-family:'Fira Code',monospace; font-size:13px }
+    .achieve-before { color: var(--err); background: rgba(239,68,68,.1); padding:4px 10px; border-radius:6px }
+    .achieve-after  { color: var(--ok);  background: rgba(34,197,94,.1);  padding:4px 10px; border-radius:6px }
+    .achieve-stat i { color: var(--muted); font-size: 11px }
 
     /* CONTACT - FIXED */
     .contact-grid {
@@ -295,7 +339,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Sharjeel Sohail",
-    "jobTitle": "Python Backend Developer",
+    "jobTitle": "Senior Backend Engineer",
     "url": "",
     "email": "mailto:shijisohail786@gmail.com",
     "telephone": "+92-335-4200848",
@@ -304,7 +348,7 @@
       "https://github.com/shijisohail"
     ],
     "knowsAbout": [
-      "Python", "Django", "Django REST Framework", "Microservices", "Kafka", "Celery", "Docker", "Kubernetes", "AWS", "Redis", "PostgreSQL", "MongoDB", "CI/CD", "AI Integration", "Whisper"
+      "Python", "FastAPI", "Django", "Django REST Framework", "NestJS", "TypeScript", "TimescaleDB", "PostgreSQL", "MongoDB", "Redis", "Microservices", "Kafka", "RabbitMQ", "GCP", "Docker", "Kubernetes", "AWS", "CI/CD", "OAuth2", "AI-Assisted Engineering"
     ]
   }
   </script>
@@ -322,7 +366,7 @@
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#code">Code</a>
+        <a href="#achievements">Achievements</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -332,11 +376,11 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <span class="chip"><i class="fa-solid fa-terminal"></i> Python • Django • FASTAPI • Microservices</span>
+        <span class="chip"><i class="fa-solid fa-terminal"></i> Python • FastAPI • TimescaleDB • NestJS • GCP</span>
         <h1 class="title">
-          Building <span class="gradient">reliable</span>, <span class="gradient">scalable</span> backends.
+          Building <span class="gradient">high-performance</span>, <span class="gradient">scalable</span> backends.
         </h1>
-        <p class="subtitle">Backend Developer with 4+ years of experience across Logistics, IoT, and Cybersecurity. I design and ship production-grade APIs, microservices, and data pipelines using Django, DRF, Kafka, Celery, Docker, Kubernetes, and AWS. Strong focus on performance, security, and reliability.</p>
+        <p class="subtitle">Senior Backend Engineer with 5+ years of experience in Python and distributed systems. At Uforia (Leadpages), independently designed and delivered the full Analytics Service, Global Scripts infrastructure, HTMLPub platform, and five CRM integrations. Strong focus on performance, ownership, and AI-assisted delivery.</p>
         <div class="cta">
           <a class="btn primary" href="#projects"><i class="fa-solid fa-rocket"></i> View Projects</a>
           <a class="btn" href="mailto:shijisohail786@gmail.com"><i class="fa-solid fa-envelope"></i> Hire Me</a>
@@ -349,14 +393,14 @@
         <div class="hero-card">
           <div style="font-size:14px; color:var(--muted);">Recent Impact</div>
           <div class="kpis">
-            <div class="kpi"><div class="num" data-count="25">0%</div><div class="note">API latency ↓</div></div>
-            <div class="kpi"><div class="num" data-count="40">0%</div><div class="note">Server load ↓</div></div>
-            <div class="kpi"><div class="num" data-count="30">0%</div><div class="note">Revenue ↑</div></div>
+            <div class="kpi"><div class="num" data-count="93">0%</div><div class="note">Query latency ↓</div></div>
+            <div class="kpi"><div class="num" data-count="5">0</div><div class="note">CRM integrations</div></div>
+            <div class="kpi"><div class="num" data-count="10">0</div><div class="note">Enrichment steps</div></div>
           </div>
           <ul class="bullets">
-            <li>Leading Python 2.7 → 3.9 migration for Leadpages production systems.</li>
-            <li>RabbitMQ + Core Python for distributed messaging and microservices.</li>
-            <li>Docker/K8s on AWS (EC2, S3) for resilient deployments.</li>
+            <li>Cut dashboard queries from 2–4s to under 200ms on 1.4M rows via TimescaleDB continuous aggregates.</li>
+            <li>Sole architect of the Leadpages Analytics Service — zero prior codebase, full ownership.</li>
+            <li>Shipped production features across Python, TypeScript, Lua, and infrastructure in a single role.</li>
           </ul>
         </div>
       </div>
@@ -367,56 +411,63 @@
   <section id="about">
     <div class="container">
       <div class="section-title"><i class="fa-solid fa-user"></i><h2>About</h2></div>
-      <p class="section-desc">I turn business requirements into secure, performant services. I enjoy modeling domains, designing clean REST contracts, and automating background work. Comfortable owning features end‑to‑end: spec → API → database → CI/CD → observability.</p>
+      <p class="section-desc">Senior Backend Engineer with 5+ years owning features end-to-end — from system design and data models to APIs, infrastructure, and CI/CD. Comfortable across Python, TypeScript, and Lua, with deep focus on performance, distributed systems, and AI-assisted delivery.</p>
 
       <div class="skills" style="margin-top:18px">
         <div class="skill-card">
-          <h3>Backend & APIs</h3>
+          <h3>Languages</h3>
           <div class="badges">
-            <span class="badge">Python</span><span class="badge">Django</span><span class="badge">DRF</span><span class="badge">FastAPI (familiar)</span>
-            <span class="badge">REST</span><span class="badge">Auth (JWT)</span><span class="badge">ORM</span>
+            <span class="badge">Python (expert)</span><span class="badge">TypeScript</span><span class="badge">JavaScript</span>
+            <span class="badge">SQL</span><span class="badge">Lua</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Frameworks</h3>
+          <div class="badges">
+            <span class="badge">FastAPI</span><span class="badge">Django</span><span class="badge">Django REST Framework</span>
+            <span class="badge">NestJS</span><span class="badge">Next.js</span><span class="badge">Flask</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Databases & Storage</h3>
+          <div class="badges">
+            <span class="badge">PostgreSQL</span><span class="badge">TimescaleDB</span><span class="badge">MongoDB</span>
+            <span class="badge">Redis</span><span class="badge">MySQL</span>
           </div>
         </div>
         <div class="skill-card">
           <h3>Messaging & Queues</h3>
           <div class="badges">
-            <span class="badge">RabbitMQ</span><span class="badge">Apache Kafka</span><span class="badge">Message Brokers</span><span class="badge">Event-Driven</span>
-            <span class="badge">Async Messaging</span>
+            <span class="badge">RabbitMQ</span><span class="badge">Apache Kafka</span><span class="badge">GCP Pub/Sub</span>
+            <span class="badge">BullMQ</span><span class="badge">Celery</span>
           </div>
         </div>
         <div class="skill-card">
-          <h3>Legacy Modernization</h3>
+          <h3>Cloud & Infra</h3>
           <div class="badges">
-            <span class="badge">Python 2.7 → 3.9</span><span class="badge">Code Migration</span><span class="badge">Refactoring</span>
-            <span class="badge">Compatibility</span>
+            <span class="badge">GCP (GKE, GCS, BigQuery)</span><span class="badge">AWS (S3, EC2)</span>
+            <span class="badge">Docker</span><span class="badge">Kubernetes</span><span class="badge">Railway</span>
           </div>
         </div>
         <div class="skill-card">
-          <h3>Cloud & DevOps</h3>
+          <h3>Integrations & Auth</h3>
           <div class="badges">
-            <span class="badge">Docker</span><span class="badge">Kubernetes</span><span class="badge">AWS (EC2, S3)</span>
-            <span class="badge">CI/CD</span><span class="badge">Linux</span>
+            <span class="badge">OAuth 2.0</span><span class="badge">Paragon iPaaS</span><span class="badge">REST APIs</span>
+            <span class="badge">HMAC-SHA256</span><span class="badge">Webhooks</span>
           </div>
         </div>
         <div class="skill-card">
-          <h3>Data & Storage</h3>
+          <h3>Testing</h3>
           <div class="badges">
-            <span class="badge">PostgreSQL</span><span class="badge">MySQL</span><span class="badge">MongoDB</span>
-            <span class="badge">Migrations</span>
+            <span class="badge">pytest</span><span class="badge">pytest-asyncio</span><span class="badge">HTTPX</span>
+            <span class="badge">Jest</span><span class="badge">Vitest</span><span class="badge">TDD</span>
           </div>
         </div>
         <div class="skill-card">
-          <h3>AI Integration</h3>
+          <h3>AI Tooling</h3>
           <div class="badges">
-            <span class="badge">OpenAI Whisper</span><span class="badge">Speech‑to‑Text</span><span class="badge">NLP</span>
-            <span class="badge">Model Integration</span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <h3>Quality & Observability</h3>
-          <div class="badges">
-            <span class="badge">Unit Testing</span><span class="badge">Debugging</span>
-            <span class="badge">Logging/Monitoring</span>
+            <span class="badge">Cursor</span><span class="badge">Claude Code</span><span class="badge">MCP Integrations</span>
+            <span class="badge">Agentic Workflows</span>
           </div>
         </div>
       </div>
@@ -431,49 +482,57 @@
       <div class="timeline">
         <div class="tl-item">
           <div class="job">
-            <h3>Python Developer — Uforia (Client: Leadpages)</h3>
-            <div class="meta">Aug 2024 – Present · Remote</div>
+            <h3>Software Engineer III — Uforia (Leadpages, Canada)</h3>
+            <div class="meta">Aug 2025 – Present · Remote</div>
+            <p style="color:var(--muted); font-size:13px; margin:0 0 10px 0"><strong style="color:var(--brand-2)">Analytics Service</strong> — FastAPI / TimescaleDB / GCP</p>
             <ul class="bullets">
-              <li>Leading Python migration project from legacy Python 2.7 to Python 3.9 for critical production systems.</li>
-              <li>Architecting and implementing RabbitMQ-based messaging solutions for distributed microservices.</li>
-              <li>Refactoring core Python codebase to ensure compatibility, performance optimization, and maintainability.</li>
-              <li>Collaborating with Leadpages team to modernize infrastructure while maintaining zero-downtime deployments.</li>
-              <li>Implementing automated testing strategies and CI/CD pipelines for seamless migration process.</li>
+              <li>Architected the full analytics backend from scratch: 10-step enrichment pipeline — SHA-256 visitor fingerprinting, GDPR IP anonymization, MaxMind GeoLite2 zero-latency lookup, bot detection, device parsing, and UTM extraction.</li>
+              <li>Cut dashboard query latency from 2–4s to under 200ms on 1.4M rows by designing 5 TimescaleDB continuous aggregates replacing 10 raw hypertable scans.</li>
+              <li>Built a parallel metrics read API executing 10 queries via <code>asyncio.gather</code> with global filter propagation, CVR, and period-over-period comparison.</li>
+            </ul>
+            <p style="color:var(--muted); font-size:13px; margin:12px 0 10px 0"><strong style="color:var(--brand-2)">Global Scripts</strong> — NestJS / TypeScript / GCS / RabbitMQ</p>
+            <ul class="bullets">
+              <li>Built end-to-end: full CRUD REST API, transactional GCS manifest upload, and RabbitMQ cache invalidation on every script change.</li>
+              <li>Fixed a production CORS bug and patched the Lua routing script; shipped analytics-tracker via Kubernetes Helm configs with per-environment feature-flag rollout.</li>
+            </ul>
+            <p style="color:var(--muted); font-size:13px; margin:12px 0 10px 0"><strong style="color:var(--brand-2)">HTMLPub</strong> — Next.js / TypeScript / PostgreSQL / Drizzle / Railway</p>
+            <ul class="bullets">
+              <li>Replaced a static hardcoded integration registry with a DB-backed JSONB table, 5-min TTL cache, and admin CRUD UI — cutting new provider onboarding from a full deploy cycle to a 5-minute zero-deployment operation.</li>
+              <li>Implemented opt-in email notifications for form submissions: non-blocking fire-and-forget dispatch with HTML and plain-text templates, user preference stored per account.</li>
+            </ul>
+            <p style="color:var(--muted); font-size:13px; margin:12px 0 10px 0"><strong style="color:var(--brand-2)">Integrations Platform</strong> — Python / Paragon / OAuth 2.0</p>
+            <ul class="bullets">
+              <li>Delivered 5 CRM integrations end-to-end (Salesforce, Pipedrive, Shopify, AWeber, Constant Contact) covering Paragon OAuth 2.0 workflows, action config APIs, and per-provider retry and error handling.</li>
             </ul>
           </div>
         </div>
         <div class="tl-item">
           <div class="job">
-            <h3>Python Developer — Merik Solutions (Client: AT&T & DunTracking)</h3>
-            <div class="meta">Jun 2024 – Aug 2024 · Islamabad</div>
+            <h3>Python Developer — Merik Solutions</h3>
+            <div class="meta">Jun 2024 – Jan 2026 · Islamabad</div>
             <ul class="bullets">
-              <li>Designed and integrated APIs & web crawlers to fetch real‑time shipment data from ports and carriers.</li>
-              <li>Improved synchronization and availability for AT&T's shipment tracking; boosted operational visibility.</li>
-              <li>Implemented async task processing with Celery + Redis; reduced latency and increased throughput.</li>
-              <li>Containerized services with Docker and orchestrated on Kubernetes; leveraged AWS for HA and fault tolerance.</li>
-              <li>Hardened network controls and added monitoring for secure, efficient data transmission.</li>
+              <li>Built APIs and web crawlers integrating multiple cargo port and logistics carrier data sources for AT&T shipment tracking, improving operational visibility and data synchronization.</li>
+              <li>Delivered a scalable data aggregation platform for DunTracking; ensured reliability via Celery/Redis async processing and Docker/Kubernetes deployments on AWS.</li>
             </ul>
           </div>
         </div>
         <div class="tl-item">
           <div class="job">
-            <h3>Python Developer — HyperNym (IoT)</h3>
+            <h3>Python Developer — HyperNym</h3>
             <div class="meta">Sep 2022 – Jun 2024 · Islamabad</div>
             <ul class="bullets">
-              <li>Built microservices and REST APIs (DRF); added middleware for authZ/authN and request shaping.</li>
-              <li>PostgreSQL/MySQL/MongoDB data models; efficient queries and indexing for device telemetry.</li>
-              <li>Inter‑service communication via direct calls and Kafka events; monitored IoT network bandwidth.</li>
-              <li>Delivered products for Vodafone Qatar and MTN Nigeria; mentored 2 interns to independence.</li>
+              <li>Designed and maintained Django/DRF microservices for IoT platforms serving Vodafone Qatar and MTN Nigeria, with Apache Kafka inter-service communication and PostgreSQL/MongoDB data layers.</li>
+              <li>Developed auth middlewares, RESTful APIs, and monitored IoT device network performance; mentored two junior Python engineers to independent contribution.</li>
             </ul>
           </div>
         </div>
         <div class="tl-item">
           <div class="job">
-            <h3>Backend Developer — Cyber Reconnaissance & Combat Center</h3>
+            <h3>Back End Developer — Cyber Reconnaissance & Combat Center</h3>
             <div class="meta">Oct 2021 – Jul 2022 · Islamabad</div>
             <ul class="bullets">
-              <li>Built a web platform to manage virtual environments for cyber learning.</li>
-              <li>Developed vulnerable machines for cyber drills simulating realistic attack surfaces.</li>
+              <li>Built vulnerable web applications and OS environments for cybersecurity drill training platforms.</li>
+              <li>Developed the management web app for the learning environment.</li>
             </ul>
           </div>
         </div>
@@ -485,123 +544,123 @@
   <section id="projects">
     <div class="container">
       <div class="section-title"><i class="fa-solid fa-diagram-project"></i><h2>Projects</h2></div>
-      <p class="section-desc">Selected work spanning logistics, AI, and IoT. Use filters to explore.</p>
+      <p class="section-desc">Production work across analytics, integrations, infrastructure, and logistics. Use filters to explore.</p>
 
       <div class="filters">
         <button class="filter active" data-filter="*">All</button>
-        <button class="filter" data-filter="migration">Migration</button>
+        <button class="filter" data-filter="analytics">Analytics</button>
+        <button class="filter" data-filter="integrations">Integrations</button>
+        <button class="filter" data-filter="infrastructure">Infrastructure</button>
         <button class="filter" data-filter="logistics">Logistics</button>
-        <button class="filter" data-filter="ai">AI</button>
         <button class="filter" data-filter="iot">IoT</button>
         <button class="filter" data-filter="security">Security</button>
       </div>
 
       <div class="projects-grid" id="projectGrid">
-        <article class="project" data-tags="migration">
-          <div class="chip"><i class="fa-solid fa-code-branch"></i> Migration</div>
-          <h3>Python 2.7 → 3.9 Migration</h3>
-          <p>Large-scale codebase migration for Leadpages, modernizing legacy systems while maintaining production stability and zero downtime.</p>
-          <div class="tags"><span class="tag">Python 2.7</span><span class="tag">Python 3.9</span><span class="tag">RabbitMQ</span><span class="tag">Migration</span></div>
-        </article>
-        
-        <article class="project" data-tags="ai">
-          <div class="chip"><i class="fa-solid fa-wave-square"></i> AI / NLP</div>
-          <h3>AI‑Powered Call Analysis System</h3>
-          <p>Automates transcription and analysis of client calls using Whisper + GPT‑4o. Generates real‑time suggestions and performance feedback.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Whisper</span><span class="tag">OpenAI</span><span class="tag">Streamlit</span></div>
+        <article class="project" data-tags="analytics">
+          <div class="chip"><i class="fa-solid fa-chart-line"></i> Analytics · Uforia / Leadpages</div>
+          <h3>Analytics Service</h3>
+          <p>End-to-end analytics backend from scratch. 10-step enrichment pipeline: SHA-256 fingerprinting, GDPR IP anonymization, zero-latency GeoIP, bot detection, UTM extraction. 5 continuous aggregates cutting queries from 2–4s to under 200ms on 1.4M rows. Parallel 10-query API with CVR, session duration, and period comparison.</p>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">TimescaleDB</span><span class="tag">asyncio</span><span class="tag">MaxMind GeoLite2</span><span class="tag">GCP</span><span class="tag">BigQuery</span></div>
           <div class="cta"><a class="btn" href="#code">View code sample</a></div>
         </article>
 
-        <article class="project" data-tags="logistics">
-          <div class="chip"><i class="fa-solid fa-truck"></i> Logistics</div>
-          <h3>Dunavant Platform</h3>
-          <p>Real‑time aggregation that fetches logistics data from ports/carriers; exposes APIs to third‑party clients with live shipment info.</p>
-          <div class="tags"><span class="tag">Django</span><span class="tag">DRF</span><span class="tag">Kafka</span><span class="tag">Celery</span></div>
+        <article class="project" data-tags="infrastructure">
+          <div class="chip"><i class="fa-solid fa-code"></i> Infrastructure · Uforia / Leadpages</div>
+          <h3>Global Scripts Infrastructure</h3>
+          <p>Owner-scoped manifest published to GCS on every change. Manifest-loader injected on every published page with environment-aware domain resolution. Lua routing patch + Kubernetes Helm feature-flag rollout.</p>
+          <div class="tags"><span class="tag">NestJS</span><span class="tag">TypeScript</span><span class="tag">GCS</span><span class="tag">RabbitMQ</span><span class="tag">Lua</span><span class="tag">Kubernetes</span></div>
+        </article>
+
+        <article class="project" data-tags="integrations infrastructure">
+          <div class="chip"><i class="fa-solid fa-plug"></i> Platform · Uforia / Leadpages</div>
+          <h3>HTMLPub Integration Registry</h3>
+          <p>DB-backed JSONB registry with 5-min TTL cache and admin CRUD UI. New integrations live in under 5 minutes with zero deployment. Form submission email notifications with per-account preference.</p>
+          <div class="tags"><span class="tag">Next.js</span><span class="tag">Drizzle ORM</span><span class="tag">PostgreSQL</span><span class="tag">Paragon</span><span class="tag">BullMQ</span><span class="tag">Railway</span></div>
+        </article>
+
+        <article class="project" data-tags="integrations">
+          <div class="chip"><i class="fa-solid fa-handshake"></i> Integrations · Uforia / Leadpages</div>
+          <h3>5 Paragon CRM Integrations</h3>
+          <p>Salesforce, Pipedrive, Shopify, AWeber, Constant Contact end-to-end: OAuth 2.0, action config and destination fields APIs, per-provider retry logic, AWeber 60s rate-limit backoff, Shopify GraphQL upsert.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Paragon iPaaS</span><span class="tag">OAuth 2.0</span><span class="tag">GraphQL</span></div>
         </article>
 
         <article class="project" data-tags="logistics">
-          <div class="chip"><i class="fa-solid fa-boxes-stacked"></i> Logistics</div>
-          <h3>AT&T Shipment Tracking</h3>
-          <p>Unified tracking across multiple logistics stages; improved synchronization and delivery visibility; secure network controls.</p>
-          <div class="tags"><span class="tag">Microservices</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">K8s</span></div>
+          <div class="chip"><i class="fa-solid fa-boxes-stacked"></i> Logistics · Merik Solutions</div>
+          <h3>AT&T Shipment Tracking System</h3>
+          <p>Real-time tracking integrating multiple cargo ports and logistics carriers. Celery/Redis async processing reduced latency; deployed on AWS with Docker/Kubernetes for high availability.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Celery</span><span class="tag">Redis</span><span class="tag">AWS</span><span class="tag">Docker</span></div>
         </article>
 
         <article class="project" data-tags="iot">
-          <div class="chip"><i class="fa-solid fa-building"></i> IoT</div>
-          <h3>Smart Building & Surveillance</h3>
-          <p>IoT platform for buildings with alerts for leakage, fire, humidity, and temperature; real‑time notifications and Kafka eventing.</p>
-          <div class="tags"><span class="tag">DRF</span><span class="tag">Kafka</span><span class="tag">PostgreSQL</span></div>
-        </article>
-
-        <article class="project" data-tags="iot">
-          <div class="chip"><i class="fa-solid fa-leaf"></i> IoT</div>
-          <h3>Smart Environment</h3>
-          <p>Realtime AQI graphs and environmental analytics by city/area; data visualization and reporting services.</p>
-          <div class="tags"><span class="tag">Analytics</span><span class="tag">Graphs</span><span class="tag">MongoDB</span></div>
+          <div class="chip"><i class="fa-solid fa-building"></i> IoT · HyperNym</div>
+          <h3>Smart Building & Surveillance Platform</h3>
+          <p>IoT platform for building management: water leakage, fire alarm, humidity, and temperature sensors with real-time notifications across microservices via Apache Kafka.</p>
+          <div class="tags"><span class="tag">Django</span><span class="tag">DRF</span><span class="tag">Apache Kafka</span><span class="tag">PostgreSQL</span><span class="tag">IoT</span></div>
         </article>
 
         <article class="project" data-tags="security">
           <div class="chip"><i class="fa-solid fa-shield-halved"></i> Security</div>
           <h3>Cyber Drills Platform</h3>
-          <p>Vulnerable machine development and a platform to orchestrate cyber learning environments.</p>
-          <div class="tags"><span class="tag">Linux</span><span class="tag">Web Platform</span></div>
+          <p>Vulnerable web applications and OS environments for cybersecurity drill training; management web app for the learning environment.</p>
+          <div class="tags"><span class="tag">Linux</span><span class="tag">Web Platform</span><span class="tag">Cybersecurity</span></div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- CODE SHOWCASE -->
-  <section id="code">
+  <!-- KEY ACHIEVEMENTS -->
+  <section id="achievements">
     <div class="container">
-      <div class="section-title"><i class="fa-solid fa-code"></i><h2>Code Samples</h2></div>
-      <p class="section-desc">A small taste of the style I use for resilient services: DRF views, Celery workers, and Kafka producers/consumers.</p>
+      <div class="section-title"><i class="fa-solid fa-trophy"></i><h2>Key Achievements</h2></div>
+      <p class="section-desc">Measured, production impact across performance, ownership, and delivery.</p>
 
-      <h3>DRF Endpoint — Shipments</h3>
-      <pre><code class="language-py"># views.py
-from rest_framework import viewsets, permissions
-from rest_framework.response import Response
-from .models import Shipment
-from .serializers import ShipmentSerializer
+      <div class="achieve-grid">
 
-class ShipmentViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Shipment.objects.select_related("order").prefetch_related("events").all()
-    serializer_class = ShipmentSerializer
-    permission_classes = [permissions.IsAuthenticated]
+        <div class="achieve-card achieve-perf">
+          <div class="achieve-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>93% Query Latency Reduction</h3>
+          <p>Cut Leadpages dashboard queries from 2–4s to under 200ms on 1.4M rows by designing 5 TimescaleDB continuous aggregates, replacing 10 raw hypertable scans.</p>
+          <div class="achieve-stat"><span class="achieve-before">2–4s</span><i class="fa-solid fa-arrow-right"></i><span class="achieve-after">~200ms</span></div>
+        </div>
 
-    def list(self, request, *args, **kwargs):  # latency-optimized list
-        qs = self.filter_queryset(self.get_queryset())
-        page = self.paginate_queryset(qs)
-        if page is not None:
-            return self.get_paginated_response(self.get_serializer(page, many=True).data)
-        return Response(self.get_serializer(qs, many=True).data)
-</code></pre>
+        <div class="achieve-card achieve-own">
+          <div class="achieve-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+          <h3>Sole Architect — Analytics Service</h3>
+          <p>Designed and delivered the full Analytics backend from zero — system design, data models, API contracts, enrichment pipeline, and infra — with no prior codebase to reference.</p>
+          <div class="tags" style="margin-top:8px"><span class="tag">FastAPI</span><span class="tag">TimescaleDB</span><span class="tag">GCP</span><span class="tag">asyncio</span></div>
+        </div>
 
-      <h3>Celery Task — Enrich Tracking</h3>
-      <pre><code class="language-py"># tasks.py
-from celery import shared_task
-from .services import enrich_tracking
+        <div class="achieve-card achieve-deploy">
+          <div class="achieve-icon"><i class="fa-solid fa-rocket"></i></div>
+          <h3>Zero-Deployment Onboarding</h3>
+          <p>Eliminated full deploy cycles for integration onboarding at HTMLPub. New providers go live in under 5 minutes via a DB-backed JSONB registry with admin CRUD — no code change, no redeploy.</p>
+          <div class="achieve-stat"><span class="achieve-before">Full deploy</span><i class="fa-solid fa-arrow-right"></i><span class="achieve-after">5 min</span></div>
+        </div>
 
-@shared_task(queue="tracking")
-def enrich_tracking_task(shipment_id: int) -> None:
-    enrich_tracking(shipment_id)
-</code></pre>
+        <div class="achieve-card achieve-xstack">
+          <div class="achieve-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>Cross-Stack Delivery</h3>
+          <p>Shipped production features across Python (FastAPI), TypeScript (NestJS, Next.js), Lua, SQL (TimescaleDB, PostgreSQL), and infrastructure (GKE, GCS, RabbitMQ, Railway) — all within a single role at Uforia.</p>
+          <div class="tags" style="margin-top:8px"><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">Lua</span><span class="tag">SQL</span><span class="tag">K8s</span></div>
+        </div>
 
-      <h3>Kafka Producer</h3>
-      <pre><code class="language-py"># events.py
-from kafka import KafkaProducer
-import json
+        <div class="achieve-card achieve-ai">
+          <div class="achieve-icon"><i class="fa-solid fa-robot"></i></div>
+          <h3>AI-Augmented Engineering</h3>
+          <p>Pioneered agentic workflows at Uforia using Cursor and Claude Code with MCP integrations (Linear, Notion, Slack) — configured subagents, persistent rules, and multi-repo context to measurably increase delivery throughput.</p>
+          <div class="tags" style="margin-top:8px"><span class="tag">Claude Code</span><span class="tag">Cursor</span><span class="tag">MCP</span><span class="tag">Agentic Workflows</span></div>
+        </div>
 
-producer = KafkaProducer(
-    bootstrap_servers=["kafka:9092"],
-    value_serializer=lambda v: json.dumps(v).encode("utf-8"),
-)
+        <div class="achieve-card achieve-prod">
+          <div class="achieve-icon"><i class="fa-solid fa-fire-extinguisher"></i></div>
+          <h3>Production Incident Fixes</h3>
+          <p>Diagnosed and silently resolved a live AWeber credential bug blocking all integration tasks — with no staging reproduction path. Patched a CORS bug and Lua routing issue in Global Scripts, unblocking page manifest delivery without a full redeploy.</p>
+          <div class="tags" style="margin-top:8px"><span class="tag">Production Debugging</span><span class="tag">Lua</span><span class="tag">CORS</span></div>
+        </div>
 
-def publish_event(topic: str, payload: dict) -> None:
-    producer.send(topic, payload)
-    producer.flush()
-</code></pre>
-
-      <div class="note">More samples and anonymized gists available on request.</div>
+      </div>
     </div>
   </section>
 
@@ -693,7 +752,7 @@ def publish_event(topic: str, payload: dict) -> None:
 
   <script>
     // Typing effect
-    const words = ["Django & DRF", "Microservices", "Kafka & Celery", "Docker & K8s", "AWS" ];
+    const words = ["FastAPI & TimescaleDB", "NestJS & TypeScript", "Kafka & RabbitMQ", "Docker & K8s", "GCP & Cloud Build"];
     let i=0, j=0, current="", isDeleting=false;
     function type(){
       const el = document.getElementById('typing');
@@ -708,13 +767,15 @@ def publish_event(topic: str, payload: dict) -> None:
     type();
 
     // KPI counter
-    document.querySelectorAll('.kpi .num').forEach(el => {
+    document.querySelectorAll('.kpi .num').forEach((el, i) => {
       const target = Number(el.dataset.count || 0);
+      const suffixes = ['%', '', ''];
+      const suffix = suffixes[i] || '';
       let c = 0;
       const step = () => {
-        c += Math.max(1, Math.round(target/30));
-        if(c >= target){ el.textContent = target + (target<100?'%':''); }
-        else { el.textContent = c + (target<100?'%':''); requestAnimationFrame(step); }
+        c += Math.max(1, Math.round(target / 30));
+        if (c >= target) { el.textContent = target + suffix; }
+        else { el.textContent = c + suffix; requestAnimationFrame(step); }
       };
       step();
     });
